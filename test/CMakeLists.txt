@@ -32,7 +32,7 @@ enable_testing()
 
 include_directories(
     "../inc"
-    )
+)
 
 # Some recommendations on NOT using file globbing to grab all cpp files.  So far, it seems
 # ok, so rolling with it until we get more experience.
@@ -40,6 +40,10 @@ include_directories(
 #"mocks/*.cpp",
 file(GLOB UNIT_TEST_SOURCES
     "*.cpp"
+    "../src/Calculator.cpp"
+    "../src/CalculatorW2.cpp"
+    "../src/TokenizerW2.cpp"
+    "../src/IoStreamCalculatorW2.cpp"
 )
 
 add_executable(${This} ${UNIT_TEST_SOURCES})
