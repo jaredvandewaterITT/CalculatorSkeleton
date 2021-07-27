@@ -47,6 +47,12 @@ namespace calculatorw2
              */
             void Run();
 
+            /**
+             * @brief Print Hello and Help information to the commandline
+             * 
+             */
+            void OutputHelloAndHelp();
+
         private:
 
             /**

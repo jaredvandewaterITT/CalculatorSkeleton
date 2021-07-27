@@ -24,6 +24,12 @@ namespace calculatorw2
         
     }
 
+    void IoStreamCalculatorW2::OutputHelloAndHelp()
+    {
+        std::cout << helloMessage << std::endl;
+        std::cout << helpMessage << std::endl;
+    }
+
     void IoStreamCalculatorW2::Run()
     {   
         error_ = nullptr;

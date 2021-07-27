@@ -19,7 +19,7 @@ namespace calculatorw2
     {
         std::string inputString;
         std::getline(input, inputString);
-        std::cout << "IS:" << inputString << std::endl;
+        
         TokenizerW2* tokenizerW2Ptr = new TokenizerW2(inputString);
         return tokenizerW2Ptr;
     }

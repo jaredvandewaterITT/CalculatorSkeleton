@@ -15,5 +15,6 @@ int main()
     //calculator::RunCalculator();
     calculatorw2::IoStreamCalculatorW2 ioStreamCalculatorW2;
 
+    ioStreamCalculatorW2.OutputHelloAndHelp();
     ioStreamCalculatorW2.Run();
 }
