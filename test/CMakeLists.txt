@@ -40,6 +40,8 @@ include_directories(
 #"mocks/*.cpp",
 file(GLOB UNIT_TEST_SOURCES
     "*.cpp"
+    "../src/IOperation.cpp"
+    "../src/TestOperation.cpp"
 )
 
 add_executable(${This} ${UNIT_TEST_SOURCES})
