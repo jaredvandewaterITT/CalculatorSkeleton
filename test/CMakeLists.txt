@@ -41,7 +41,12 @@ include_directories(
 file(GLOB UNIT_TEST_SOURCES
     "*.cpp"
     "../src/IOperation.cpp"
+    "../src/IUnaryOperator.cpp"
+    "../src/IBinaryOperator.cpp"
     "../src/TestOperation.cpp"
+    "../src/AbsOperator.cpp"
+    "../src/AdditionOperator.cpp"
+    "../src/ParenthesisOperation.cpp"
 )
 
 add_executable(${This} ${UNIT_TEST_SOURCES})

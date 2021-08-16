@@ -9,6 +9,9 @@
  * 
  */
 
+#ifndef TESTOPERATION_H
+#define TESTOPERATION_H
+
 #include "IOperation.h"
 
 namespace Calculator
@@ -16,11 +19,13 @@ namespace Calculator
     class TestOperation : public IOperation
     {        
         public:
-            static unsigned PRIORITY;
             static std::string OPERATOR;
 
             TestOperation();
             ~TestOperation();
+            
             bool eval(std::string &input);
     };
 }
+
+#endif //TESTOPERATION_H

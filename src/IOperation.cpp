@@ -13,12 +13,12 @@
 
 namespace Calculator
 {
-    IOperation::IOperation(unsigned priority, std::string operatorString) :
-        priority_(priority), operator_(operatorString) {}
+    IOperation::IOperation(IOperation::PRIORITY priority, std::string operatorString) :
+        priority_(priority), operator_(operatorString)/*, error_(nullptr)*/ {}
 
     IOperation::~IOperation() {}
 
-    unsigned IOperation::Priority()
+    IOperation::PRIORITY IOperation::Priority()
     {
         return priority_;
     }
@@ -27,4 +27,9 @@ namespace Calculator
     {
         return operator_;
     }
+
+    // void IOperation::setError(std::string error)
+    // {
+    //     error_  = error;
+    // }
 }

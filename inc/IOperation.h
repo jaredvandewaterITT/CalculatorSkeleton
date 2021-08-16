@@ -9,6 +9,9 @@
  * 
  */
 
+#ifndef IOPERATION_H
+#define IOPERATION_H
+
 #include <string>
 
 namespace Calculator
@@ -16,15 +19,21 @@ namespace Calculator
     class IOperation
     {
         public:
+            enum class PRIORITY { ZERO, ONE, TWO, THREE, FOUR, FIVE };
+
             virtual bool eval(std::string &input) = 0;
 
-            IOperation(unsigned priority, std::string operatorString);
+            IOperation(IOperation::PRIORITY priority, std::string operatorString);
             ~IOperation();
             const std::string& Operator();
-            unsigned Priority();
+            IOperation::PRIORITY Priority();
+            //void setError(const std::string error);
             
         private:
-            unsigned priority_;
+            IOperation::PRIORITY priority_;
             std::string operator_;
+            //std::string error_;
     };
 }
+
+#endif //IOPERATION_H

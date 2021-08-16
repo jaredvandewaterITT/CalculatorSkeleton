@@ -13,17 +13,16 @@
 
 namespace Calculator
 {
-    unsigned TestOperation::PRIORITY = 0;
     std::string TestOperation::OPERATOR = "T";
 
     TestOperation::TestOperation() :
-        IOperation(TestOperation::PRIORITY, TestOperation::OPERATOR) {}
+        IOperation(IOperation::PRIORITY::ZERO, TestOperation::OPERATOR) {}
 
     TestOperation::~TestOperation() {}
 
     bool TestOperation::eval(std::string &input)
     {
-        input.append(" ").append(std::to_string(Priority())).append(" ").append(Operator());
+        input.append(" ").append(std::to_string((unsigned)Priority())).append(" ").append(Operator());
         return true;
     }
 }
