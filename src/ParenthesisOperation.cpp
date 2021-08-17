@@ -13,13 +13,14 @@
 #include <regex>
 
 #include "ParenthesisOperation.h"
+#include "OperatorFactory.h"
 
 namespace Calculator
 {
-    const std::string ParenthesisOperation::OPERATOR = "\\(";
+    const std::string ParenthesisOperation::OPERATOR = "(";
 
     ParenthesisOperation::ParenthesisOperation() :
-        IOperation(IOperation::PRIORITY::ONE, ParenthesisOperation::OPERATOR) {}
+        IOperation(IOperation::PRIORITY::ONE, ParenthesisOperation::OPERATOR, true) {}
 
     ParenthesisOperation::~ParenthesisOperation() {}
 
@@ -27,13 +28,13 @@ namespace Calculator
     {
         bool retv = false;
 
-        std::string rgx_string = Operator() + "([^\\(\\)]+)\\)";
+        std::string rgx_string = Escape() + Operator() + "([^\\(\\)]+)\\)";
         std::regex rgx(rgx_string);
         std::smatch sm;
 
-        if (regex_search(input, sm, rgx)) 
+        while (regex_search(input, sm, rgx)) 
         {
-            double arg = std::stod(sm[1]);
+            //double arg = std::stod(sm[1]);
             std::string result = "EVALUATED"; //calculate(arg);
             input = regex_replace(input, rgx, result);
             retv = true;

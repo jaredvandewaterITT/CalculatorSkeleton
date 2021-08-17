@@ -21,7 +21,7 @@ namespace Calculator
         public:
             virtual double calculate(double) = 0;
             
-            IUnaryOperator(std::string operatorString);
+            IUnaryOperator(std::string operatorString, bool escape = false);
             ~IUnaryOperator();
             
             bool eval(std::string &input);

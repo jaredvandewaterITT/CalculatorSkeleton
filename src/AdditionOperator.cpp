@@ -15,10 +15,10 @@
 
 namespace Calculator
 {
-    const std::string AdditionOperator::OPERATOR = "\\+";
+    const std::string AdditionOperator::OPERATOR = "+";
 
     AdditionOperator::AdditionOperator() : 
-        IBinaryOperator(IOperation::PRIORITY::FOUR, AdditionOperator::OPERATOR) {}
+        IBinaryOperator(IOperation::PRIORITY::FOUR, AdditionOperator::OPERATOR, true) {}
 
     AdditionOperator::~AdditionOperator() {}
 

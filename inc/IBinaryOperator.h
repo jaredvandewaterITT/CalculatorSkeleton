@@ -21,7 +21,7 @@ namespace Calculator
         public:
             virtual double calculate(double left, double right) = 0;
             
-            IBinaryOperator(IOperation::PRIORITY priority, std::string operatorString);
+            IBinaryOperator(IOperation::PRIORITY priority, std::string operatorString, bool escape = false);
             ~IBinaryOperator();
             
             bool eval(std::string &input);

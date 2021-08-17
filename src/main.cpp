@@ -8,7 +8,7 @@
 
 #include <iostream>
 #include "Calculator.h"
-#include "AdditionOperator.h"
+#include "OperatorFactory.h"
 
 using namespace Calculator;
 
@@ -16,14 +16,11 @@ int main()
 {
     // Fill in or change code here as necessary.  See also Calculator.cpp
     std::cout << "Welcome to the Calculator C++ learning project." << std::endl;
-    AdditionOperator additionOperator;
-    std::string testing1 = "7 - 1 + 1 / 5";
-    if (additionOperator.eval(testing1))
-    {
-        std::cout << "pass:" << testing1 << std::endl;
+
+    OperatorFactory of;
+
+    for (IOperation::PRIORITY p : IOperation::PRIORITIES)
+    {   
+        std::cout << static_cast<typename std::underlying_type<IOperation::PRIORITY>::type>(p) <<  "[" << of.GetOperatorsByPriority(p) << "]" << std::endl;
     }
-    else 
-    {
-        std::cout << "fail:" << testing1 << std::endl;
-    };
 }

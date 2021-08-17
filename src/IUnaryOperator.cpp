@@ -15,8 +15,8 @@
 
 namespace Calculator
 {            
-    IUnaryOperator::IUnaryOperator(std::string operatorString) :
-        IOperation(IOperation::PRIORITY::TWO, operatorString) {}
+    IUnaryOperator::IUnaryOperator(std::string operatorString, bool escape) :
+        IOperation(IOperation::PRIORITY::TWO, operatorString, escape) {}
 
     IUnaryOperator::~IUnaryOperator() {}
 
@@ -24,7 +24,7 @@ namespace Calculator
     {
         bool retv = false;
 
-        std::string rgx_string = Operator() + " ([^ ]+)";
+        std::string rgx_string = Escape() + Operator() + " ([^ ]+)";
         std::regex rgx(rgx_string);
         std::smatch sm;
 

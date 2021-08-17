@@ -46,7 +46,11 @@ file(GLOB UNIT_TEST_SOURCES
     "../src/TestOperation.cpp"
     "../src/AbsOperator.cpp"
     "../src/AdditionOperator.cpp"
+    "../src/SubtractionOperator.cpp"
+    "../src/DivisionOperator.cpp"
+    "../src/MultiplicationOperator.cpp"
     "../src/ParenthesisOperation.cpp"
+    "../src/OperatorFactory.cpp"
 )
 
 add_executable(${This} ${UNIT_TEST_SOURCES})
