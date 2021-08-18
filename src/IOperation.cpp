@@ -9,42 +9,27 @@
  * 
  */
 
+#include "CalculatorResources.h"
 #include "IOperation.h"
 
 namespace Calculator
 {
-    const std::vector<IOperation::PRIORITY> IOperation::PRIORITIES = {
-        IOperation::PRIORITY::ZERO,
-        IOperation::PRIORITY::ONE,
-        IOperation::PRIORITY::TWO,
-        IOperation::PRIORITY::THREE,
-        IOperation::PRIORITY::FOUR,
-        IOperation::PRIORITY::FIVE,
-        IOperation::PRIORITY::SIX
-    };
+    IOperation(OPORDER oporder, std::string opregex) :
+       oporder_(oporder), opregex_(opregex)/*, error_(nullptr)*/ {}
 
-    IOperation::IOperation(IOperation::PRIORITY priority, std::string operatorString, bool escape) :
-        priority_(priority), operator_(operatorString), escape_(escape)/*, error_(nullptr)*/ {}
+    ~IOperation() {}
 
-    IOperation::~IOperation() {}
-
-    IOperation::PRIORITY IOperation::Priority()
+    const OPORDER Order()
     {
-        return priority_;
+        return oporder_;
     }
 
-    const std::string& IOperation::Operator()
+    const std::string Regex()
     {
-        return operator_;
+        return opregex_;
     }
 
-    std::string IOperation::Escape()
-    {
-        std::string retv = escape_ ? "\\" : "";
-        return retv;
-    }
-
-    // void IOperation::setError(std::string error)
+    // void setError(std::string error)
     // {
     //     error_  = error;
     // }
