@@ -9,6 +9,7 @@
  * 
  */
 
+#include<iostream>
 #include <regex>
 
 #include "IBinaryOperator.h"
@@ -27,6 +28,8 @@ namespace Calculator
         std::string rgx_string = "([^ ]+) " + Escape() + Operator() + " ([^ ]+)";
         std::regex rgx(rgx_string);
         std::smatch sm;
+
+        std::cout << "sub|" << input << "|" << rgx_string <<std::endl;
 
         if (regex_search(input, sm, rgx)) 
         {

@@ -13,7 +13,7 @@
 #include <regex>
 
 #include "ParenthesisOperation.h"
-#include "OperatorFactory.h"
+#include "Evaluator.h"
 
 namespace Calculator
 {
@@ -32,12 +32,12 @@ namespace Calculator
         std::regex rgx(rgx_string);
         std::smatch sm;
 
-        while (regex_search(input, sm, rgx)) 
+        if (regex_search(input, sm, rgx)) 
         {
-            //double arg = std::stod(sm[1]);
-            std::string result = "EVALUATED"; //calculate(arg);
-            input = regex_replace(input, rgx, result);
-            retv = true;
+            Evaluator evaluator;
+            std::string expression = sm[1];
+            retv = evaluator.eval(expression);
+            input = regex_replace(input, rgx, expression, std::regex_constants::format_first_only);
         }
 
         return retv;

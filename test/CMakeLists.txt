@@ -32,7 +32,7 @@ enable_testing()
 
 include_directories(
     "../inc"
-    )
+)
 
 # Some recommendations on NOT using file globbing to grab all cpp files.  So far, it seems
 # ok, so rolling with it until we get more experience.
@@ -51,7 +51,10 @@ file(GLOB UNIT_TEST_SOURCES
     "../src/MultiplicationOperator.cpp"
     "../src/ParenthesisOperation.cpp"
     "../src/OperatorFactory.cpp"
+    "../src/Evaluator.cpp"
 )
+
+list(REMOVE_ITEM UNIT_TEST_SOURCES "/mnt/c/Users/gary.jenkins/source/repos/CalculatorSkeleton/src/main.cpp")
 
 add_executable(${This} ${UNIT_TEST_SOURCES})
 

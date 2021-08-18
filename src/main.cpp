@@ -21,6 +21,6 @@ int main()
 
     for (IOperation::PRIORITY p : IOperation::PRIORITIES)
     {   
-        std::cout << static_cast<typename std::underlying_type<IOperation::PRIORITY>::type>(p) <<  "[" << of.GetOperatorsByPriority(p) << "]" << std::endl;
+        std::cout << static_cast<typename std::underlying_type<IOperation::PRIORITY>::type>(p) <<  "[" << of.GetOperatorsRegExByPriority(p) << "]" << std::endl;
     }
 }

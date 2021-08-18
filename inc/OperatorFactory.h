@@ -24,7 +24,7 @@ namespace Calculator
             OperatorFactory();
             ~OperatorFactory();
             IOperation* GetOperator(std::string operatorString);
-            std::string GetOperatorsByPriority(IOperation::PRIORITY priority);
+            std::string GetOperatorsRegExByPriority(IOperation::PRIORITY priority);
 
         private:
             //static OperatorFactory operatorFactory;

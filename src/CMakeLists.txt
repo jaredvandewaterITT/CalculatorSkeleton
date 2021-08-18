@@ -10,6 +10,7 @@ list(APPEND _sources ../inc/DivisionOperator.h DivisionOperator.cpp)
 list(APPEND _sources ../inc/MultiplicationOperator.h MultiplicationOperator.cpp)
 list(APPEND _sources ../inc/ParenthesisOperation.h ParenthesisOperation.cpp)
 list(APPEND _sources ../inc/OperatorFactory.h OperatorFactory.cpp)
+list(APPEND _sources ../inc/Evaluator.h Evaluator.cpp)
 
 # Set the output folder where your program will be created
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/build)

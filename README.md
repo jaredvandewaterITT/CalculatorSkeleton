@@ -49,3 +49,15 @@ cd test
 ./calculator_test
 ```
 
+
+    "../src/IOperation.cpp"
+    "../src/IUnaryOperator.cpp"
+    "../src/IBinaryOperator.cpp"
+    "../src/TestOperation.cpp"
+    "../src/AbsOperator.cpp"
+    "../src/AdditionOperator.cpp"
+    "../src/SubtractionOperator.cpp"
+    "../src/DivisionOperator.cpp"
+    "../src/MultiplicationOperator.cpp"
+    "../src/ParenthesisOperation.cpp"
+    "../src/OperatorFactory.cpp"

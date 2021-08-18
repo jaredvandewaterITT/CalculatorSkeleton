@@ -21,6 +21,7 @@
 #include "../inc/DivisionOperator.h"
 #include "../inc/ParenthesisOperation.h"
 #include "../inc/OperatorFactory.h"
+#include "../inc/Evaluator.h"
 
 using namespace Calculator;
 
@@ -81,102 +82,106 @@ using namespace Calculator;
 //     EXPECT_EQ(testing2, "5 + EVALUATED");
 // }
 
-TEST(Week3IOperationTests, AdditionTests)
-{
-    AdditionOperator o;
+// TEST(Week3IOperationTests, AdditionTests)
+// {
+//     AdditionOperator o;
 
-    std::string test = "1 + 2";
-    EXPECT_EQ(o.eval(test), true);
-    EXPECT_EQ(test, "3.000000");
-}
+//     std::string test = "1 + 2";
+//     EXPECT_EQ(o.eval(test), true);
+//     EXPECT_EQ(test, "3.000000");
+// }
 
 TEST(Week3IOperationTests, SubtractionTests)
 {
     SubtractionOperator o;
     
-    std::string test = "1 - 2";
+    std::string test = "1 - -2";
+    std::string test2 = "1 - -2";
     EXPECT_EQ(o.eval(test), true);
-    EXPECT_EQ(test, "-1.000000");
+    EXPECT_EQ(test, "3.000000");
+
+    Evaluator e;
+    EXPECT_EQ(o.eval(test2), true);
+    EXPECT_EQ(test, "3.000000");
 }
 
-TEST(Week3IOperationTests, MultiplicationTests)
-{
-    MultiplicationOperator o;
+// TEST(Week3IOperationTests, MultiplicationTests)
+// {
+//     MultiplicationOperator o;
     
-    std::string test = "1.1 * -2";
-    EXPECT_EQ(o.eval(test), true);
-    EXPECT_EQ(test, "-2.200000");
-}
+//     std::string test = "1.1 * -2";
+//     EXPECT_EQ(o.eval(test), true);
+//     EXPECT_EQ(test, "-2.200000");
+// }
 
-TEST(Week3IOperationTests, DivisionTests)
-{
-    DivisionOperator o;
+// TEST(Week3IOperationTests, DivisionTests)
+// {
+//     DivisionOperator o;
     
-    std::string test = "3.3 / -1.1";
-    EXPECT_EQ(o.eval(test), true);
-    EXPECT_EQ(test, "-3.000000");
-}
+//     std::string test = "3.3 / -1.1";
+//     EXPECT_EQ(o.eval(test), true);
+//     EXPECT_EQ(test, "-3.000000");
+// }
 
-TEST(Week3IOperationTests, OperatorFactoryTests)
-{
-    OperatorFactory of;
+// TEST(Week3IOperationTests, OperatorFactoryTests)
+// {
+//     OperatorFactory of;
 
-    std::string testing = "1 + -2 - 1 * 4 / -2";
-    EXPECT_EQ(of.GetOperator("+")->eval(testing), true);
-    EXPECT_EQ(testing, "-1.000000 - 1 * 4 / -2");
+//     std::string testing = "1 + -2 - 1 * 4 / -2";
+//     EXPECT_EQ(of.GetOperator("+")->eval(testing), true);
+//     EXPECT_EQ(testing, "-1.000000 - 1 * 4 / -2");
 
-    //testing = "1 - 2";
-    EXPECT_EQ(of.GetOperator("-")->eval(testing), true);
-    EXPECT_EQ(testing, "-2.000000 * 4 / -2");
+//     //testing = "1 - 2";
+//     EXPECT_EQ(of.GetOperator("-")->eval(testing), true);
+//     EXPECT_EQ(testing, "-2.000000 * 4 / -2");
 
-    //testing = "-2 * 3";
-    EXPECT_EQ(of.GetOperator("*")->eval(testing), true);
-    EXPECT_EQ(testing, "-8.000000 / -2");
+//     //testing = "-2 * 3";
+//     EXPECT_EQ(of.GetOperator("*")->eval(testing), true);
+//     EXPECT_EQ(testing, "-8.000000 / -2");
 
-    //testing = "-9 / 3";
-    EXPECT_EQ(of.GetOperator("/")->eval(testing), true);
-    EXPECT_EQ(testing, "4.000000");
-}
+//     //testing = "-9 / 3";
+//     EXPECT_EQ(of.GetOperator("/")->eval(testing), true);
+//     EXPECT_EQ(testing, "4.000000");
+// }
 
-TEST(Week3IOperationTests, RegexTests)
-{
-    std::string testing = " 1 / 2 /";
-    std::string rgx_string = " (/) ";
-    std::regex rgx(rgx_string);
-    std::smatch sm;
+// TEST(Week3IOperationTests, RegexTests)
+// {
+//     std::string testing = " 1 / 2 /";
+//     std::string rgx_string = " (/) ";
+//     std::regex rgx(rgx_string);
+//     std::smatch sm;
 
-    regex_search(testing, sm, rgx);
-    std::cout << sm.size() << "|" << sm[0] << "|" << sm[1] << std::endl;
-}
+//     regex_search(testing, sm, rgx);
+// }
 
-TEST(Week3IOperationTests, OperatorFactoryScanTests)
-{
-    OperatorFactory of;
+// TEST(Week3IOperationTests, EvaluatorTests)
+// {
+//     Evaluator ev;
+//     std::string testing = "1 + -2 * 4 + 8 / -2";
+//     EXPECT_EQ(ev.eval(testing), true);
+//     EXPECT_EQ(testing, "-11.000000");
 
-    std::string testing = "1 + -2 * 4 + 8 / 2";
+//     testing = "(1)";// * 5 - 9 / (5 - 2)";
+//     EXPECT_EQ(ev.eval(testing), true);
+//     EXPECT_EQ(testing, "1");
 
-    for (IOperation::PRIORITY p : IOperation::PRIORITIES)
-    {
-        std::string rgx_string = of.GetOperatorsByPriority(p);
-        std::cout << static_cast<typename std::underlying_type<IOperation::PRIORITY>::type>(p) << "(" << rgx_string << ")" << std::endl;
-        if (rgx_string != "")
-        {
-            std::regex rgx(rgx_string);
-            std::smatch sm;
+//     testing = "4 * (5 - 9) / (5 - 3)";
+//     EXPECT_EQ(ev.eval(testing), true);
+//     EXPECT_EQ(testing, "-8.000000");
+// }
 
-            while (regex_search(testing, sm, rgx)) 
-            {
-                std::cout << "   found[" << sm.size() << "|" << sm[0] << "|" << sm[1] << "] in [" << testing << "]" << std::endl;
+// TEST(Week3IOperationTests, ParenthesisTests)
+// {
+//     ParenthesisOperation po;
 
-                of.GetOperator(sm[1])->eval(testing);
+//     std::string testing = "(1 + -2) * (4 + 8) / -2";
+//     EXPECT_EQ(po.eval(testing), true);
+//     EXPECT_EQ(testing, "-1.000000 * (4 + 8) / -2");
 
-                std::cout << sm[1] << ":" << testing << std::endl;
-            }
-        }
+//     EXPECT_EQ(po.eval(testing), true);
+//     EXPECT_EQ(testing, "-1.000000 * 12.000000 / -2");
 
-
-        //std::cout << static_cast<typename std::underlying_type<IOperation::PRIORITY>::type>(p) <<  "[" << of.GetOperatorsByPriority(p) << "]" << std::endl;
-    }
-}
-
-
+//     testing = "(1)";
+//     EXPECT_EQ(po.eval(testing), true);
+//     EXPECT_EQ(testing, "1");
+// }

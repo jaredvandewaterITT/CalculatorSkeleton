@@ -44,7 +44,7 @@ namespace Calculator
         return operators_[operatorString];
     }
 
-    std::string OperatorFactory::GetOperatorsByPriority(IOperation::PRIORITY priority)
+    std::string OperatorFactory::GetOperatorsRegExByPriority(IOperation::PRIORITY priority)
     {
         std::string retv = "";
         std::string sep = "";
@@ -58,6 +58,6 @@ namespace Calculator
             }
         }
 
-        return " (" + retv + ") ";
+        return "(" + retv + ")";
     }
 }
